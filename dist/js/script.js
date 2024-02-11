@@ -58,6 +58,7 @@ const select = {
       thisProduct.id = id;
       thisProduct.data = data;
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
       console.log('new Product:', thisProduct);
     }
@@ -74,14 +75,32 @@ const select = {
       menuContainer.appendChild(thisProduct.element);
     }
 
+    getElements() {
+      const thisProduct = this;
+
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+
+      console.log('thisProduct.accordionTrigger:', thisProduct.accordionTrigger);
+      console.log('thisProduct.form:', thisProduct.form);
+      console.log('thisProduct.formInputs:', thisProduct.formInputs);
+      console.log('thisProduct.cartButton:', thisProduct.cartButton);
+      console.log('thisProduct.priceElem:', thisProduct.priceElem);
+    }
+
     initAccordion() {
       const thisProduct = this;
 
       /* XXXXXXfind the clickable trigger (the element that should react to clicking) */
-      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      //const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       /* START: add event listener to clickable trigger on event click */
-      clickableTrigger.addEventListener('click', function (event) {
+      //clickableTrigger.addEventListener('click', function (event) {
+      thisProduct.accordionTrigger.addEventListener('click', function (event) {
+      
         /* prevent default action for event */
         event.preventDefault();
         /* find active product (product that has active class) */
