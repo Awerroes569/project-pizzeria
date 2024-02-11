@@ -85,10 +85,18 @@ const select = {
         /* prevent default action for event */
         event.preventDefault();
         /* find active product (product that has active class) */
-
+        const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
+        console.log('activeProducts:', activeProducts);
         /* if there is active product and it's not thisProduct.element, remove class active from it */
-
+        if (activeProducts) {
+          for (let activeProduct of activeProducts) {
+            if (activeProduct !== thisProduct.element) {
+              activeProduct.classList.remove('active');
+            }
+          }
+        }
         /* toggle active class on thisProduct.element */
+        thisProduct.element.classList.toggle('active');
       });
 
     }
