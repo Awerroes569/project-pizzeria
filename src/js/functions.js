@@ -36,6 +36,16 @@ utils.serializeFormToObject = function(form){
   return output;
 };
 
+utils.correctPrice = function (isSelected, isDefault, price) {
+  let correction = 0;
+  if (isSelected && !isDefault) {
+    correction += price;
+  } else if (!isSelected && isDefault) {
+    correction -= price;
+  }
+  return correction;
+};
+
 Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
