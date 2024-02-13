@@ -85,12 +85,14 @@ const select = {
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
 
       console.log('thisProduct.accordionTrigger:', thisProduct.accordionTrigger);
       console.log('thisProduct.form:', thisProduct.form);
       console.log('thisProduct.formInputs:', thisProduct.formInputs);
       console.log('thisProduct.cartButton:', thisProduct.cartButton);
       console.log('thisProduct.priceElem:', thisProduct.priceElem);
+      console.log('thisProduct.imageWrapper:', thisProduct.imageWrapper);
     }
 
     initAccordion() {
@@ -174,6 +176,17 @@ const select = {
           console.log('optionPrice:', optionPrice);
           priceAdjustment += utils.correctPrice(isOptionSelected, isOptionDefault, optionPrice);
           console.log('priceAdjustment:', priceAdjustment);
+          let optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          console.log('optionImage:', optionImage);
+          if (optionImage) {
+            let isActive = optionImage.classList.contains('active');
+            console.log('isActive:', isActive);
+            if (utils.shouldToggleActive(isOptionSelected, isActive)) {
+              optionImage.classList.toggle('active');
+            }
+          
+          }
+
         }
       }
       console.log('FINAL PRICE ADJUSTMENT:', priceAdjustment); 

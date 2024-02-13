@@ -46,6 +46,16 @@ utils.correctPrice = function (isSelected, isDefault, price) {
   return correction;
 };
 
+utils.shouldToggleActive = function (isSelected, isActive) {
+  if (isSelected && !isActive) {
+    return true;
+  } else if (!isSelected && isActive) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
