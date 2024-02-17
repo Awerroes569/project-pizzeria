@@ -56,6 +56,18 @@ utils.shouldToggleActive = function (isSelected, isActive) {
   }
 };
 
+utils.isNumber = function (value) {
+  return /^\d+$/.test(value);
+};
+
+
+utils.isAmountValid = function (price,min,max) {
+  if (price >= min && price <= max) {
+    return true;
+  }
+  return false;
+};
+
 Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
