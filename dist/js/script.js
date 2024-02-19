@@ -147,6 +147,7 @@ const select = {
 
       thisProduct.cartButton.addEventListener('click', function (event) {
         event.preventDefault();
+        thisProduct.addToCart();
         thisProduct.processOrder();
       }); 
     
@@ -208,9 +209,72 @@ const select = {
       console.log('FINAL PRICE ADJUSTMENT:', priceAdjustment); 
       // update calculated price in the HTML
       price += priceAdjustment;
-      price*=thisProduct.amountWidget.value;
+      thisProduct.price = price;
+      price *= thisProduct.amountWidget.value;
+      thisProduct.totalPrice = price;
       thisProduct.priceElem.innerHTML = price;
     }
+
+    addToCart() {
+      const thisProduct = this;
+      app.cart.add(thisProduct.prepareCartProduct());
+    }
+
+    prepareCartProduct() {
+      const thisProduct = this;
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
+        priceSingle: thisProduct.price,
+        price: thisProduct.totalPrice,
+        params: thisProduct.prepareCartProductParams(),
+      };
+      console.log('PRODUCT SUMMARY:', productSummary);
+      return productSummary;
+    }
+
+    prepareCartProductParams() {
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      const params = {};
+
+      for (let paramId in thisProduct.data.params) {
+        // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+        const param = thisProduct.data.params[paramId];
+        console.log("CART for every cathegory", paramId, param);
+        params[paramId] = {
+          label: param.label,
+          options: {}//{}
+        };
+
+        // for every option in this category
+        for (let optionId in param.options) {
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId];
+          console.log("for every option", optionId, option);
+          let isOptionSelected = formData[paramId] && formData[paramId].includes(optionId);
+          console.log('isOptionSelected:', isOptionSelected);
+          //let isOptionDefault = option.default;
+          //console.log('isOptionDefault:', isOptionDefault);
+          //let optionPrice = option.price;
+          //console.log('optionPrice:', optionPrice);
+          //priceAdjustment += utils.correctPrice(isOptionSelected, isOptionDefault, optionPrice);
+          //console.log('priceAdjustment:', priceAdjustment);
+          //let optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          //console.log('optionImage:', optionImage);
+          if (isOptionSelected) {
+            //params.paramId.options.optionId = 'pupa';//option.label; 
+            params[paramId].options[optionId] = option.label;
+
+          }
+        }
+      }
+      console.log('CART PARAMS:', params);
+      return params;
+    }
+      
   }
   
   class AmountWidget {
@@ -295,7 +359,11 @@ const select = {
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       console.log('thisCart.dom.toggleTrigger:', thisCart.dom.toggleTrigger);
+    }
 
+    add(menuProduct) {
+      const thisCart = this;
+      console.log('ADDING product:', menuProduct);
     }
 
     
