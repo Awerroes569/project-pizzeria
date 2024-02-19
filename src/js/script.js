@@ -30,7 +30,10 @@ const select = {
         linkDecrease: 'a[href="#less"]',
         linkIncrease: 'a[href="#more"]',
       },
-    },
+  },
+  cart: {
+    toggleTrigger: '.cart__summary',
+  },
   };
 
   const classNames = {
@@ -270,6 +273,34 @@ const select = {
 
   }
 
+  class Cart {
+    constructor(element) {
+      const thisCart = this;
+      thisCart.products = [];
+      thisCart.getElements(element);
+      thisCart.initActions();
+      console.log('new Cart:', thisCart);
+    }
+
+    initActions() { 
+      const thisCart = this;
+      thisCart.dom.toggleTrigger.addEventListener('click', function () {
+        thisCart.dom.wrapper.classList.toggle('active');
+      });
+    }
+
+    getElements(element) {
+      const thisCart = this;
+      thisCart.dom = {};
+      thisCart.dom.wrapper = element;
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      console.log('thisCart.dom.toggleTrigger:', thisCart.dom.toggleTrigger);
+
+    }
+
+    
+  }
+
   const app = {
 
     initMenu: function () {
@@ -278,6 +309,13 @@ const select = {
       for (let productData in thisApp.data.products) {
         new Product(productData, thisApp.data.products[productData]);
       }
+    },
+
+    initCart: function () {
+      const thisApp = this;
+      const cartElem = document.querySelector(select.containerOf.cart);
+      thisApp.cart = new Cart(cartElem);
+      console.log('thisApp.cart:', thisApp.cart);
     },
 
     initData: function () {
@@ -295,6 +333,7 @@ const select = {
 
       thisApp.initData();
       thisApp.initMenu();
+      thisApp.initCart();
     },
   };
 
