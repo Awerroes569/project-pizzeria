@@ -268,7 +268,7 @@ const select = {
       thisWidget.element.dispatchEvent(event);
     }
 
-  };
+  }
 
   const app = {
 
