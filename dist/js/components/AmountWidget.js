@@ -42,6 +42,7 @@ class AmountWidget {
             thisWidget.setValue(thisWidget.value - 1);
         });
         thisWidget.linkIncrease.addEventListener('click', function () {
+            console.log('puls clicked');
             thisWidget.setValue(thisWidget.value + 1);
         });
     }
