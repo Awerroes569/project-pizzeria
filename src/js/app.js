@@ -38,7 +38,7 @@ const app = {
     }
     
     thisApp.activatePage(pageMatchingHash );//thisApp.pages[0].id);
-    console.log('thisApp.links:', thisApp.links);
+    console.log('thisApp.links:', thisApp.navLinks);
 
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function (event) {
