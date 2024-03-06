@@ -642,4 +642,4 @@ RangeSlider.functions = func;
 RangeSlider.instances = [];
 RangeSlider.slidingVertically = false;
 
-export { RangeSlider };
+

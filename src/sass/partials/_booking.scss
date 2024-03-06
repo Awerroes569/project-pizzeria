@@ -173,6 +173,15 @@
         }
   
       }
+
+      &.marked {
+
+        background-color: $color-success;
+  
+        }
+  
+      
+
     }
   
     [data-table="1"] {
