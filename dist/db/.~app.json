@@ -290,6 +290,17 @@
       "phone": "",
       "address": "",
       "id": 2
+    },
+    {
+      "date": "2024-03-06",
+      "hour": "14:30",
+      "table": 3,
+      "duration": 1,
+      "ppl": 1,
+      "starters": [],
+      "phone": "",
+      "address": "",
+      "id": 3
     }
   ]
 }

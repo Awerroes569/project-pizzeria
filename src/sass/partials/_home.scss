@@ -1,0 +1,189 @@
+.home-wrapper {
+    //margin-right: -6px;
+    background: $color-light;
+    //width: calc(100% + 6px);
+
+    .top-info {
+            background: $color-light;
+
+            .order-book {
+                position: relative;
+            }
+
+            .home-box {
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    height: 100px;
+                    margin-bottom: 6px;   
+            }
+            
+            .order-box {
+                background-image: url('../../images/order/pizza-1.jpg');
+                //margin-right: 3px;
+                width: calc(50% - 3px);
+
+                
+            }
+        
+            .book-box {
+                background-image: url('../../images/book/pizza-2.jpg');
+                //margin-left: 3px;
+                width: calc(50% - 3px);
+            }
+        
+            .hours-box {
+                max-width: calc(100% + 6px);
+                //width: calc(100% + 6px);
+                background-color: $color-main;
+                font-size: 1.7rem;
+                margin-bottom: 80px;
+            }
+
+            
+    }
+}
+
+.online-small {
+    font-size: 1rem;
+}
+
+
+
+.online-large {
+    font-size: 1.7rem;
+}
+
+.home-rows {
+
+    ~div {
+        display: inline-flex;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.7s ease;
+    }
+
+    &:hover {
+        
+        
+        ~div {
+
+            height: 30px;
+            display: inline-flex;
+            
+        }
+    }
+    
+}
+
+.hidden-row {
+
+    display: inline-flex;
+    height: 0;
+    // transition: height 0.7s ease;
+    overflow: hidden;
+
+
+    &:hover {
+        height: 30px;
+        display: inline-flex;
+    }
+}
+.carousel {
+    background: $color-light;
+    margin-bottom: 100px;
+}
+
+.carousel-cell {
+    width: 100%;
+    height: 200px;
+    margin-right: 10px;
+    background: $color-light;
+}
+
+.carousel-cell-image {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+    opacity: 0;
+    -webkit-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+}
+
+/* fade in lazy loaded image */
+.carousel-cell-image.flickity-lazyloaded,
+.carousel-cell-image.flickity-lazyerror {
+    opacity: 1;
+}
+
+.image-lefts {
+    padding: 0 6px 9px 0;
+}
+.image-rights {
+    padding: 0 0 9px 6px;
+}
+
+.image-middles {
+    padding: 0 0 9px 6px;
+}
+
+.gallery-image {
+    height: 252px;
+    margin-bottom: 13px;
+    position: relative;
+    overflow: hidden;
+    width: 32%;
+    z-index: 0;
+
+    .icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 1s ease;
+            
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 1);
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    &:hover {
+        .icons {
+            opacity: 1;
+        }
+
+        .overlay {
+            opacity: 0.5;
+        }
+    }
+}
+
+.gallery {
+    position: relative;
+}
+
+.iconss {
+
+    color: red;
+    font-size: 36px;
+
+}
+
+.flickity-button {
+    display: none;
+    opacity: 0;
+}

@@ -8,3 +8,9 @@
 
 @import 'partials/product';
 @import 'partials/booking';
+@import 'partials/home';
+
+* {
+    outline: 1px solid red !important;
+    //line-height: 0;
+}
