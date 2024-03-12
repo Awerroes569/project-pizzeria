@@ -10,6 +10,7 @@ export const select = {
         cartList: '.cart__order-summary',
         pages: '#pages',
         booking: '.booking-wrapper',
+        home: '#home',
     },
     all: {
         menuProducts: '#product-list > .product',
@@ -53,6 +54,12 @@ export const select = {
         water: '.booking-form [value="water"]',
         bread: '.booking-form [value="bread"]',
     },
+
+    home: {
+        order: '.order-box',
+        book: '.book-box',
+    },
+
     nav: {
         links: '.main-nav a',
     },
