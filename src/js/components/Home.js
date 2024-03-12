@@ -1,4 +1,4 @@
-import { select, settings, templates, classNames } from '../settings.js';
+import { select } from '../settings.js';
 import app from '../app.js';
 
 class Home {
@@ -13,12 +13,10 @@ class Home {
     initLinks() {
 
         this.dom.order.addEventListener('click', function () {
-            console.log('order clicked');
             app.activatePage('order');
         });
 
         this.dom.book.addEventListener('click', function () {
-            console.log('book clicked');
             app.activatePage('booking');
         });
 
