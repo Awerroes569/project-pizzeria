@@ -1,7 +1,7 @@
 .home-wrapper {
-    //margin-right: -6px;
+
     background: $color-light;
-    //width: calc(100% + 6px);
+
 
     .top-info {
             background: $color-light;
@@ -186,4 +186,8 @@
 .flickity-button {
     display: none;
     opacity: 0;
+}
+
+.small-hours {
+    font-size: 1rem;
 }

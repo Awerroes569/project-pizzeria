@@ -4,10 +4,10 @@ import app from '../app.js';
 class Home {
     constructor() {
         this.dom = {};
-        
+
         this.getElements();
         this.initLinks();
-   
+
     }
 
     initLinks() {
@@ -25,7 +25,7 @@ class Home {
     getElements() {
         this.dom.order = document.querySelector(select.home.order);
         this.dom.book = document.querySelector(select.home.book);
-    } 
+    }
 }
 
 export default Home;
